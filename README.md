@@ -32,3 +32,11 @@ Měchura, Michal Boleslav (2014) ‘[Irish National Morphology Database: a high-
 		editor = {Judge, J. and Lynn, T. and Ward, M. and  Ó Raghallaigh, B.},
 		year = {2014}
 	}
+
+# Gramadóir
+
+This is a fork of the [original Gramadán repository] with an extra projected called "Gramadóir". This project is a simple command line app to take XML definitions from the [Irish National Morphology Database] and output grammatical forms in a very simple JSON format. Currently it only takes verb definitions.
+
+[original Gramadán repository]: https://github.com/michmech/Gramadan
+[Irish National Morphology Database]: https://github.com/michmech/BuNaMo
+
