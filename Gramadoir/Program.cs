@@ -37,9 +37,29 @@ namespace Gramadoir
             Verb verb = new Verb(filename);
             VP verbPrinter = new VP(verb);
 
+
+            string verbName = "";
+            if (verbPrinter.moods[VPMood.Imper][VPPerson.Sg2]?[VPPolarity.Pos].Count() > 0)
+            {
+                verbName = verbPrinter.moods[VPMood.Imper][VPPerson.Sg2][VPPolarity.Pos][0].value;
+            }
+            else
+            {
+                // There is one verb in the database, féad, that lacks any imperative forms.
+                // This is for you.
+                verbName = verbPrinter.tenses[VPTense.Past][VPShape.Declar][VPPerson.Sg1][VPPolarity.Pos][0].value;
+                verbName = verbName.Replace(" mé", "");
+                verbName = verbName.Replace("d'", "");
+                if (verbName.Substring(1,1) == "h")
+                {
+                    verbName = verbName.Substring(0, 1) + verbName.Substring(2);
+                }
+
+            }
+
             var output = new Dictionary<string, object>
             {
-                ["verbName"] = verbPrinter.moods[VPMood.Imper][VPPerson.Sg2][VPPolarity.Pos][0].value,
+                ["verbName"] = verbName,
                 ["verbalNounForms"] = verb.verbalNoun.Select(vn => vn.value),
                 ["verbalAdjectiveForms"] = verb.verbalAdjective.Select(va => va.value),
                 ["forms"] = new List<Dictionary<string, string>>()
